@@ -1,0 +1,52 @@
+#main{
+	padding: 20px;
+	font-family: "微软雅黑";
+	background: #eee;
+	border: 1px solid #999;
+	overflow: auto;
+	min-width: 600px;
+}
+#left{
+	width: 200px;
+	float: left;
+	background: white;
+	border: 1px solid #999;
+}
+#middle{
+	margin-left: 240px;
+	margin-right: 160px;
+	background: white;
+	border: 1px solid #999;
+	padding: 20px;
+
+}
+#right{
+	width: 120px;
+	float: right;
+	background: white;
+	border: 1px solid #999;
+}
+
+img{
+	width: 80px;
+	height: 80px;
+	border: 1px solid #999;
+}
+#teanlogo{
+	float: left;
+	padding: 20px;
+}
+#teamname{
+	float: left;
+	margin-top: 20px;
+	font-size: 15px;
+}
+p{
+	margin-top: 0px;
+}
+.rlogo{
+	margin: 20px 20px 0px 20px;
+}
+#rlogo4{
+	margin:20px 20px 20px 20px;
+}
