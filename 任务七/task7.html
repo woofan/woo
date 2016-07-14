@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task7</title>
+</head>
+<body>
+	<label>请输入北京今天空气质量:<input id="aqi-input" type="text"></label>
+	<button id="button" onclick="dp()">确认填写</button>
+	<div>您输入的值是:<span id="aqi-display"></span></div>
+	<script type="text/javascript">
+		function dp()
+		{
+			var a= document.getElementById("aqi-input").value;
+			var b= document.getElementById("aqi-display");
+			b.innerHTML=a;
+			b.style.color="red";
+		}
+	</script>
+</body>
+</html>
+
+<!--
+alert()直接弹出消息；
+confirm(str)消息对话框，显示str,确认或取消；
+prompt(str1,str2)消息对话框，显示str1,填写框显示str2，可改，确认或取消，确认则获取str2内容;
+
+.style.display="none/block" 显示或隐藏某标签
+-->
+ 
