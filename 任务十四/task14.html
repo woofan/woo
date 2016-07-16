@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task14</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list" >
+  </ul>
+
+<script type="text/javascript">
+var ul = document.getElementById("aqi-list");
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["武汉", 70],
+  ["深圳", 88],
+  ["苏州", 66],
+  ["无锡", 77],
+  ["贵阳", 61],
+  ["雅安", 65],
+  ["沈阳", 99],
+  ["成都", 90],
+  ["西安", 100]
+];
+  var len = aqiData.length;
+  var n=1;
+  //排序
+  for(var i=0;i<len;i++)
+  {
+    for(var j=i+1;j<len;j++)
+    {
+      if(aqiData[i][1]<aqiData[j][1])
+        {
+          var x=aqiData[i];
+          aqiData[i]=aqiData[j];
+          aqiData[j]=x;
+        }
+    }
+  }
+//动态插入li，显示信息
+  for(var i=0;i<len;i++)
+  {
+    if(aqiData[i][1]>60)
+      {
+        var li = document.createElement("li");        
+        li.innerHTML ="第"+n+"名:"+ aqiData[i];
+        ul.appendChild(li);
+        n++;
+      }
+  }
+
+
+
+</script>
+</body>
+</html>
