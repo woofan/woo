@@ -42,7 +42,7 @@ function addAqiData() {
  */
 function renderAqiList() {
 		var table = document.getElementById("aqi-table");
-		if(table.childNodes.length == 3){
+		if(table.childNodes.length == 3){//表格空时
 			var tr = document.createElement("tr");
         	tr.innerHTML =  "<td>城市</td><td>空气质量</td><td>操作</td>";
         	table.appendChild(tr);
@@ -52,7 +52,7 @@ function renderAqiList() {
 		    table.appendChild(trn);
 	        
 		}
-		else{
+		else{//表格中已存在数据时
 			var n = aqiData.length-1;
 	        var trn = document.createElement("tr");
 		    trn.innerHTML =  "<td>"+aqiData[n][0]+"</td><td>"+aqiData[n][1]+"</td><td><button class=\"bt\">删除</button></td>";
@@ -72,7 +72,7 @@ function addBtnHandle() {
   	var a = document.getElementsByTagName("button");
 	for(var i =0;i<a.length;i++){
   		if(a[i].getAttribute("class")=="bt"){
-    		a[i].onclick = delBtnHandle;
+    		a[i].onclick = delBtnHandle;//给每个删除按钮绑定删除事件
  		}
 	}
   }
@@ -83,7 +83,7 @@ function addBtnHandle() {
  * 点击各个删除按钮的时候的处理逻辑
  * 获取哪个城市数据被删，删除数据，更新表格显示
  */
-function delBtnHandle() {
+function delBtnHandle() {//存疑:直接在删除按钮的属性中写onclick="del..."无效,不明白错误原因.
   this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
   //renderAqiList();
 }
