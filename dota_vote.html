@@ -3,24 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>test</title>
-
+    <style type="text/css">
+        #show{
+            display : flex;
+            height: auto;
+            width: 80%;
+            margin-left: 10%;
+            justify-content :center ;/*水平方向以容器中间对齐*/
+            align-items : flex-end; /*垂直方向以容器底部对齐*/
+            align-content : center;/*属性在当灵活容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）*/
+        }
+    </style>
   </head>
 <body>
 
   <table id="aqi-table">
-   <!-- 
-    <tr>
-      <td>英雄</td><td>票数</td><td>额外信息</td>
-    </tr>
-   <tr>
-      <td>北京</td><td>90</td><td><button>删除</button></td>
-    </tr>
-    <tr>
-      <td>北京</td><td>90</td><td><button>删除</button></td>
-    </tr>
-   -->
   </table>
-
+<div id="show" title="abc"></div>
 </body>
 <script type="text/javascript">
 var dota = [//基本数据,格式为:英雄名字,第一轮得票数,英雄类型(1:力量,2:敏捷,3:智力),所属分区
@@ -169,6 +168,40 @@ var dota1 = [
     ["圣堂",2097233,2,4],
     ["骷髅王",2404695,1,4]
 ];
+var dota2 = [
+    ["屠夫",6652495,1,1],
+    ["钢背兽",2217239,1,1],
+    ["熊战士",1604833,2,1],
+    ["蓝猫",3702872,3,1],
+    ["赏金",1360007,2,1],
+    ["斯文",4760724,1,1],
+    ["敌法",3634613,2,1],
+    ["大鱼人",1522027,1,1],
+    ["剑圣",5709245,2,2],
+    ["拉比克",3167274,3,2],
+    ["lion",2079385,3,2],
+    ["小黑",2904540,2,2],
+    ["神牛",4258382,1,2],
+    ["火猫",5168564,2,2],
+    ["帕克",2261249,3,2],
+    ["NEC",3272378,3,2],
+    ["风行",4333886,3,3],
+    ["虚空",2103701,2,3],
+    ["斧王",1606348,1,3],
+    ["米拉娜",3035811,2,3],
+    ["小鱼",4683243,2,3],
+    ["小狗",1483187,1,3],
+    ["龙骑士",1252191,1,3],
+    ["幽鬼",3578678,2,3],
+    ["卡尔",8461835,3,4],
+    ["艾欧",10483678,1,4],
+    ["女王",2644281,3,4],
+    ["巫医",1739523,3,4],
+    ["修补匠",2149543,3,4],
+    ["沉默",1385377,3,4],
+    ["露娜",1612422,2,4],
+    ["骷髅王",3378712,1,4]
+];
 function sum(arr,type,talent,zone){//参数分别为传入数组名,需要的求和类型(1:全部求和,2:分区求和,3:英雄类型求和),英雄类型,分区
   switch(type){
     case 1:{
@@ -220,14 +253,17 @@ function min_dota(arr){
   }
   return id;
 }
-function addtag(mes,num){
+function addtag(mes,num,co){
   var tag = document.getElementById("aqi-table");
   var text = "<td>"+mes+"</td><td>"+num+"</td>";
   var tr = document.createElement("tr");
+  tr.style.color = co;
   tr.innerHTML = text;
   tag.appendChild(tr);
 }
 addtag("第一轮总投票数:",sum(dota,1));
+addtag("第一轮总投票人数:",Math.round(sum(dota,1)/48));
+addtag("第一轮英雄平均票数:",Math.round(sum(dota,1)/dota.length));
 addtag("第一轮力量英雄得票数:",sum(dota,3,1));
 addtag("第一轮敏捷英雄得票数:",sum(dota,3,2));
 addtag("第一轮智力英雄得票数:",sum(dota,3,3));
@@ -237,15 +273,39 @@ addtag("第一轮第三区总投票数:",sum(dota,2,0,3));
 addtag("第一轮第四区总投票数:",sum(dota,2,0,4));
 addtag("第一轮得票最多的英雄:",dota[max_dota(dota)][0]+dota[max_dota(dota)][1]);
 addtag("第一轮得票最少的英雄:",dota[min_dota(dota)][0]+dota[min_dota(dota)][1]);
-addtag("第二轮总投票数:",sum(dota1,1));
-addtag("第二轮力量英雄得票数:",sum(dota1,3,1));
-addtag("第二轮敏捷英雄得票数:",sum(dota1,3,2));
-addtag("第二轮智力英雄得票数:",sum(dota1,3,3));
-addtag("第二轮第一区总投票数:",sum(dota1,2,0,1));
-addtag("第二轮第二区总投票数:",sum(dota1,2,0,2));
-addtag("第二轮第三区总投票数:",sum(dota1,2,0,3));
-addtag("第二轮第四区总投票数:",sum(dota1,2,0,4));
-addtag("第二轮得票最多的英雄:",dota1[max_dota(dota1)][0]+dota1[max_dota(dota1)][1]);
-addtag("第二轮得票最少的英雄:",dota1[min_dota(dota1)][0]+dota1[min_dota(dota1)][1]);
+addtag("第二轮总投票数:",sum(dota1,1),"orange");
+addtag("第二轮总投票人数:",Math.round(sum(dota1,1)/48),"orange");
+addtag("第二轮英雄平均票数:",Math.round(sum(dota1,1)/dota1.length),"orange");
+addtag("第二轮力量英雄得票数:",sum(dota1,3,1),"orange");
+addtag("第二轮敏捷英雄得票数:",sum(dota1,3,2),"orange");
+addtag("第二轮智力英雄得票数:",sum(dota1,3,3),"orange");
+addtag("第二轮第一区总投票数:",sum(dota1,2,0,1),"orange");
+addtag("第二轮第二区总投票数:",sum(dota1,2,0,2),"orange");
+addtag("第二轮第三区总投票数:",sum(dota1,2,0,3),"orange");
+addtag("第二轮第四区总投票数:",sum(dota1,2,0,4),"orange");
+addtag("第二轮得票最多的英雄:",dota1[max_dota(dota1)][0]+dota1[max_dota(dota1)][1],"orange");
+addtag("第二轮得票最少的英雄:",dota1[min_dota(dota1)][0]+dota1[min_dota(dota1)][1],"orange");
+addtag("第三轮总投票数:",sum(dota2,1),"red");
+addtag("第三轮总投票人数:",Math.round(sum(dota2,1)/48),"red");
+addtag("第三轮英雄平均票数:",Math.round(sum(dota2,1)/dota2.length),"red");
+addtag("第三轮力量英雄得票数:",sum(dota2,3,1),"red");
+addtag("第三轮敏捷英雄得票数:",sum(dota2,3,2),"red");
+addtag("第三轮智力英雄得票数:",sum(dota2,3,3),"red");
+addtag("第三轮第一区总投票数:",sum(dota2,2,0,1),"red");
+addtag("第三轮第二区总投票数:",sum(dota2,2,0,2),"red");
+addtag("第三轮第三区总投票数:",sum(dota2,2,0,3),"red");
+addtag("第三轮第四区总投票数:",sum(dota2,2,0,4),"red");
+addtag("第三轮得票最多的英雄:",dota2[max_dota(dota2)][0]+dota2[max_dota(dota2)][1],"red");
+addtag("第三轮得票最少的英雄:",dota2[min_dota(dota2)][0]+dota2[min_dota(dota2)][1],"red");
+var d = document.getElementById("show");
+var text = "";var color_n = 0;
+var color=["red","green","orange","yellow","blue"];
+for(var i=0;i<dota.length;i++){
+    color_n ++; 
+    text += "<div title=\""+dota[i][0]+"得票数:"+dota[i][1]+"\" style=\"height:"+dota[i][1]/10000+"px;width:20px;background-color:"+color[color_n%5]+";\"></div>";
+}
+
+       
+d.innerHTML = text;
 </script>
 </html>
