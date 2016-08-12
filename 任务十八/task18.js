@@ -15,8 +15,13 @@ function leftin(){
 		d.style.paddingTop="10px";
 		d.innerHTML=getnum.value;
 		document.body.appendChild(d);
+		getnum.value="";
 	}
 	else{
 		alert("请输入数字");
 	}
 }
+var btn1 = document.getElementById("leftin");
+btn1.addEventListener("click", function() {
+    leftin();
+});
