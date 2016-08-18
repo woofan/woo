@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task19</title>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+		.bt{
+			background:red;
+			width:20px;
+			margin-left:3px;
+		}
+		#d{
+			display : flex;
+            height: auto;
+            width: 80%;
+            margin-top: 20px;
+            justify-content :left ;/*水平方向以容器左侧对齐*/
+            align-items : flex-end; /*垂直方向以容器底部对齐*/
+            /*align-content : center;属性在当灵活容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）*/
+		}
+	</style>
+</head>
+<body>
+<input id="getnum" />
+<input type="button" value="左侧入" id="leftin"  />
+<input type="button" value="右侧入" id="rightin" />
+<input type="button" value="左侧出" id="leftout" />
+<input type="button" value="右侧入" id="rightout" />
+<div id="d"></div>
+</body>
+<script src="task19.js"></script>
+</html>
