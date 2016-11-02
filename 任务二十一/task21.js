@@ -26,8 +26,8 @@ function getInput(event){//按下回车,逗号,空格后返回值
 				}
 			}
 			if(input_value_list.length<10){//如果数组长度小于10,直接插入队尾
-				input_value_list.push(input_value.trim());
-				createInput();alert("a");//这里有问题!!!!!!!!!!!!!!1!!!!!!!!!
+				input_value_list.push(input_value.trim());alert(input_value_list);
+				createInput();//这里有问题!!!!!!!!!!!!!!1!!!!!!!!!
 				input_value = "";
 			}
 			else{//如果数字长度>=10,去掉第一个
@@ -35,16 +35,21 @@ function getInput(event){//按下回车,逗号,空格后返回值
 					input_value_list[i] = input_value_list[i+1];
 				}
 				input_value_list.push(input_value.trim());
-				createButton();
 				input_value = "";
+				createButton();
+				
 			}
 		}				
 	} 
 }
 function createInput(){
-	for(let i=0;i<input_value_list.length;i++){
+	let all_input = document.getElementsByClassName("my_input");console.log("长度:"+all_input.length);
+	for(let j=0;j<all_input.length;j++){
+		all_input[j].parentNode.removeChild(all_input[j]);
+	}
+	for(let i=0;i<input_value_list.length;i++){//感觉这里有问题
 		let input = designInput();
-		input.value = input_value_list[i];//console.log(input.value);
+		input.value = input_value_list[i];//console.log(input_value_list[i]);
 		insertAfter(global_first_div,input);//每次生成的按钮都插入到first_div的末尾
 	}
 }
