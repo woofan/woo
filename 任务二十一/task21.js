@@ -13,6 +13,7 @@ function main(){//主函数
 function getHobby(event){//按下回车,逗号,空格后返回值
 	let keycode = event.keyCode;
 	let input_value = global_first_input.value;	
+	let input_value = global_first_input.value;
 	if(keycode == "13" || keycode == "32" || keycode =="188"){//判断是否按下回车,逗号或空格
 		event.preventDefault();//alert(input_value_list[0]);
 		global_first_input.value ="";
@@ -29,14 +30,12 @@ function getHobby(event){//按下回车,逗号,空格后返回值
 			bindingMouseOverEvent("my_input1");//给所有生成的input元素绑定鼠标悬停事件
 			bindingMouseOutEvent("my_input1");//给所有生成的input元素绑定鼠标移走事件
 			bindingMouseClickEvent("my_input1");//给所有生成的input元素绑定鼠标点击事件
-		}				
 	} 
 }
 
 function getHobbies(){
 	all_hobby = global_first_textarea.value.trim();//console.log(all_hobby);
 	global_first_textarea.value = "";
-	if(all_hobby == ""){
 		alert("请输入兴趣爱好!");
 	}
 	else{
@@ -50,7 +49,6 @@ function getHobbies(){
 		bindingMouseOutEvent("my_input2");//给所有生成的input元素绑定鼠标移走事件
 		bindingMouseClickEvent("my_input2");//给所有生成的input元素绑定鼠标点击事件
 		}
-	
 }
 
 function designInput(className){//定义动态生成的按钮的各种属性
@@ -76,10 +74,8 @@ function bindingMouseClickEvent(className){//给所有生成的input元素绑定
 	for(let i=0;i<all_input.length;i++){
 		all_input[i].addEventListener("click",mclick,false);
 	}
-} 
 function mover(){//悬停事件,左边多出"点击删除"四个字,底色变红
 	this.value = "点击删除 " + this.value;
-	this.style.backgroundColor = "red"; 
 }
 function mout(){//鼠标移走事件,恢复原样
 	let length = this.value.length;
@@ -127,5 +123,4 @@ function keepUpperLimit(value_list,length){
 		}
 	}
 }
- 
 main();
